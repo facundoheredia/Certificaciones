@@ -1,6 +1,6 @@
 import {generateToken} from "../utils/jwt.js";
 
-export const login = async (req,res) => {
+export const ingreso = async (req,res) => {
     try {
         if(!req.user) {
             res.status(401).send({mensaje: "usuario invalido"});
@@ -13,7 +13,7 @@ export const login = async (req,res) => {
     }
 }
 
-export const signUp = async (req,res) => {
+export const registro = async (req,res) => {
     try {
         if(!req.user) {
             res.status(400).send({mensaje: "usuario ya existente"});
@@ -25,7 +25,7 @@ export const signUp = async (req,res) => {
     }
 }
 
-export const logOut = async (req,res) => {
+export const salir = async (req,res) => {
     res.clearCookie("jwtCookie");
     res.status(200).send({resultado: "Usuario deslogueado"})
 }

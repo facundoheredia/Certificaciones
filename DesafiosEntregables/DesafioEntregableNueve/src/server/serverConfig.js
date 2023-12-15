@@ -12,13 +12,14 @@ import { __dirname } from "../Path.js";
 import path from "path";
 import { addLogger } from "../utils/logger.js";
 //IMPORTACIONES RUTAS
-import productsRouter from "../routes/products.routes.js";
-import usersRouter from "../routes/users.routes.js";
-import cartsRouter from "../routes/carts.routes.js";
+import usuariosRouter from "../routes/usuarios.routes.js";
 import sesionRouter from "../routes/sesiones.routes.js";
-import viewRouter from "../routes/views.routes.js";
-import ticketRouter from "../routes/tickets.routes.js";
-import loggersTest from "../routes/loggersTest.routes.js";
+import contratosRouter from "../routes/contratos.routes.js";
+//import productsRouter from "../routes/products.routes.js";
+//import cartsRouter from "../routes/carts.routes.js";
+//import viewRouter from "../routes/views.routes.js";
+//import ticketRouter from "../routes/tickets.routes.js";
+//import loggersTest from "../routes/loggersTest.routes.js";
 //DOCUMENTACION API
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUiExpress from "swagger-ui-express";
@@ -94,14 +95,15 @@ function appSetUpUseConfig () {
 
 function appSetUpUseRoutes () {
     //Rutas
-    APP.use("/api/productos",productsRouter);
-    APP.use("/api/usuarios",usersRouter);
-    APP.use("/api/carritos",cartsRouter);
     APP.use("/api/sesion",sesionRouter);
-    APP.use("/api/tickets",ticketRouter);
-    APP.use("/api/loggersTest",loggersTest);
-    APP.use("/views",viewRouter);
-    APP.use("/views",express.static(path.join(__dirname,"/public")));
+    APP.use("/api/usuarios",usuariosRouter);
+    APP.use("/api/contratos",contratosRouter);
+    //APP.use("/api/productos",productsRouter);
+    //APP.use("/api/carritos",cartsRouter);
+    //APP.use("/api/tickets",ticketRouter);
+    //APP.use("/api/loggersTest",loggersTest);
+    //APP.use("/views",viewRouter);
+    //APP.use("/views",express.static(path.join(__dirname,"/public")));
 }
 
 //Conectarse a la base de datos de mongo

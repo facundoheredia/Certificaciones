@@ -1,9 +1,8 @@
 import local from "passport-local";
-import GithubStrategy from 'passport-github2';
 import jwt from "passport-jwt";
 import passport from "passport";
 import { crearHash, validarContrasenia } from "../utils/bcrypt.js";
-import { usuarioModel } from "../models/users.models.js";
+import { usuarioModel } from "../models/usuarios.models.js";
 import "dotenv/config";
 
 const LocalStrategy = local.Strategy;
@@ -29,19 +28,19 @@ const initPassport = () => {
             }
     }))
 
-    passport.use("signUp", new LocalStrategy(
-        {passReqToCallback: true, usernameField: "email", passwordField: "contrasenia"}, async (req, username, contrasenia, done) => {
-            const {nombre, apellido, edad, email} = req.body;
+    passport.use("registro", new LocalStrategy(
+        {passReqToCallback: true, usernameField: "legajo", passwordField: "contrasenia"}, async (req, username, contrasenia, done) => {
+            const {nombre, apellido, legajo} = req.body;
             
             try {
-                 const usuario = await usuarioModel.findOne({email: email})
+                 const usuario = await usuarioModel.findOne({legajo: legajo})
 
                  if(usuario) {
                     return done(null, false);
                  }
 
                  const contraseniaHash = crearHash(contrasenia);
-                 const usuarioCreado = await usuarioModel.create({nombre: nombre,apellido: apellido,edad: edad, email: email, contrasenia: contraseniaHash});
+                 const usuarioCreado = await usuarioModel.create({nombre: nombre,apellido: apellido, legajo: legajo, contrasenia: contraseniaHash});
 
                  return done(null, usuarioCreado);
 
@@ -51,11 +50,11 @@ const initPassport = () => {
         }
     ))
 
-    passport.use("login", new LocalStrategy(
-        {usernameField:"email", passwordField: "contrasenia"}, async (username, contrasenia, done) => {
+    passport.use("ingreso", new LocalStrategy(
+        {usernameField:"legajo", passwordField: "contrasenia"}, async (username, contrasenia, done) => {
 
             try {
-                const usuario = await usuarioModel.findOne({email: username});
+                const usuario = await usuarioModel.findOne({legajo: username});
 
                 if(!usuario) {
                     return done(null, false);
@@ -71,46 +70,6 @@ const initPassport = () => {
             }
         }
     ))
-
-    passport.use("github", new GithubStrategy({
-        clientID: process.env.CLIENT_ID,
-        clientSecret: process.env.SECRET_CLIENT,
-        callbackURL: process.env.CALLBACK_URL
-    }, async (accessToken, refreshToken, profile, done) => {
-        try {
-            const usuario = await usuarioModel.findOne({email: profile._json.email});
-
-            if(usuario) {
-                done(null, usuario);
-            } else {
-                const usuarioCreado = await usuarioModel.create({nombre: profile._json.name, apellido: " ", email: profile._json.email, edad: 18, password: crearHash(profile._json.email + profile._json.name)});
-
-                done(null, usuarioCreado);
-            }
-        } catch (error) {
-            done(error);
-        }
-    }))
-
-    passport.use("githubViews", new GithubStrategy({
-        clientID: process.env.CLIENT_ID,
-        clientSecret: process.env.SECRET_CLIENT,
-        callbackURL: process.env.CALLBACK_URL_VIEWS
-    }, async (accessToken, refreshToken, profile, done) => {
-        try {
-            const usuario = await usuarioModel.findOne({email: profile._json.email});
-
-            if(usuario) {
-                done(null, usuario);
-            } else {
-                const usuarioCreado = await usuarioModel.create({nombre: profile._json.name, apellido: " ", email: profile._json.email, edad: 18, password: crearHash(profile._json.email + profile._json.name)});
-
-                done(null, usuarioCreado);
-            }
-        } catch (error) {
-            done(error);
-        }
-    }))
 
     passport.serializeUser((usuario, done) => {
         done(null, usuario._id);
