@@ -1,0 +1,24 @@
+* {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#navbar,#footer {
+    min-height: 5vh !important;
+}
+
+#bodyHome, #bodyProductos, #bodyCrearProducto, #bodyDeleteProducts, #bodyCarritos, #bodyCarritoDetalle, #bodyLogin, #bodySingUp, #bodyDocumentacionApi {
+    min-height: 90vh !important;
+}
+
+.tituloSeccion {
+    height: 5vh;
+}
+
+.textoProducto {
+    font-size: 0.75rem;
+}
+
+.formulariosProductos {
+    min-height: 25vh;
+}

@@ -1,0 +1,32 @@
+<div id="bodyLogin" class="container-fluid d-flex justify-content-center align-items-center">
+    <div class="column">
+        <form id="loginForm" action="/views/login" method="POST">
+            <div class="row d-flex flex-column justify-content-center align-items-center text-center">
+                <div>
+                    <label for="email" class="form-label pb-2">EMAIL</label>
+                    <input type="email" class="form-control" name="email" id="email" required/>
+                </div>
+                <div>
+                    <label for="contrasenia" class="form-label pb-2">CONTRASEÑA</label>
+                    <input type="password" class="form-control" name="contrasenia" id="contrasenia" required/>
+                </div>
+            </div>
+            <div class="row d-flex flex-column justify-content-center align-items-center pt-4">
+                <div class="d-flex justify-content-center align-items-center">
+                    <button type="submit" class="btn btn-dark p-2 fw-bold d-flex flex-row">
+                        <span class="material-symbols-outlined">login</span><p class="ps-2">INGRESAR</p>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <div class="row d-flex flex-column justify-content-center align-items-center pt-4">
+            <div class="d-flex justify-content-center align-items-center">
+                <a href="/views/loginWithGithub" class="text-decoration-none">
+                    <button type="submit" class="btn btn-dark p-2 fw-bold d-flex flex-row">
+                        <span class="material-symbols-outlined">login</span><p class="ps-2">INGRESAR CON GITHUB</p>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>    
+</div>

@@ -1,0 +1,20 @@
+* {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#navbar,#footer {
+    min-height: 5vh !important;
+}
+
+#bodyHome, #bodyProductos, #bodyCrearProducto, #bodyRealTimeProductos, #bodyDeleteProducts {
+    min-height: 90vh !important;
+}
+
+.tituloSeccion {
+    height: 22.5vh;
+}
+
+.formulario {
+    height: 67.5vh;
+}

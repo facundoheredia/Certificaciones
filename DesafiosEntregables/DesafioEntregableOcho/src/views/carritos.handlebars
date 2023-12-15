@@ -1,0 +1,110 @@
+<div id="bodyCarritos" class="container-fluid">
+  <nav class="row col-12 pt-4">
+    <div class="nav nav-tabs nav-underline d-flex justify-content-center align-items-center animate__animated animate__fadeIn animate__slow" id="nav-tab" role="tablist">
+      <button class="nav-link active ps-4 pe-4" id="nav-crearCarrito-tab" data-bs-toggle="tab" data-bs-target="#nav-crearCarrito" type="button" role="tab" aria-controls="nav-crearCarrito" aria-selected="true">CREAR CARRITO</button>
+      <button class="nav-link ps-4 pe-4" id="nav-agregarProductoEnCarrito-tab" data-bs-toggle="tab" data-bs-target="#nav-agregarProductoEnCarrito" type="button" role="tab" aria-controls="nav-agregarProductoEnCarrito" aria-selected="false">AGREGAR PRODUCTO A CARRITO</button>
+      <button class="nav-link ps-4 pe-4" id="nav-borrarProductoDeCarrito-tab" data-bs-toggle="tab" data-bs-target="#nav-borrarProductoDeCarrito" type="button" role="tab" aria-controls="nav-borrarProductoDeCarrito" aria-selected="false">BORRAR PRODUCTO DE CARRITO</button>
+      <button class="nav-link ps-4 pe-4" id="nav-vaciarCarrito-tab" data-bs-toggle="tab" data-bs-target="#nav-vaciarCarrito" type="button" role="tab" aria-controls="nav-vaciarCarrito" aria-selected="false">VACIAR CARRITO</button>
+    </div>
+  </nav>
+  <div class="row col-12 tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active formulariosProductos shadow animate__animated animate__fadeIn animate__slow" id="nav-crearCarrito" role="tabpanel" aria-labelledby="nav-crearProducto-tab" tabindex="0">
+      <div class="p-4">
+        <form id="crearCarritoForm">
+            <div class="row">
+                <div class="col-12 pe-4 text-center">
+                    <p>A apretar el boton se creara un carrito vacio con un ID automatico. Este carrito creado aparecera en la lista que se encuentra mas abajo.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 pt-4 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success p-2 fw-bold d-flex flex-row" id="botonCrearCarrito">
+                        <span class="material-symbols-outlined">done</span><p>CREAR CARRITO</p>
+                    </button>
+                </div>
+            </div>
+        </form>
+      </div>
+    </div>    
+    <div class="tab-pane fade formulariosProductos shadow animate__animated animate__fadeIn animate__slow" id="nav-agregarProductoEnCarrito" role="tabpanel" aria-labelledby="nav-agregarProductoEnCarrito-tab" tabindex="0">
+        <div class="p-4">
+            <form id="agregarProductoEnCarritoForm">
+                <div class="row">
+                    <div class="col-4 pe-4">
+                        <label for="idCarritoAgregarProductoEnCarrito" class="form-label pb-2">ID DEL CARRITO</label>
+                        <input type="text" class="form-control" name="idCarritoAgregarProductoEnCarrito" id="idCarritoAgregarProductoEnCarrito" placeholder="reid932" required />
+                    </div>
+                    <div class="col-4 pe-4">
+                        <label for="idProductoAgregarProductoEnCarrito" class="form-label pb-2">ID DEL PRODUCTO</label>
+                        <input type="text" class="form-control" name="idProductoAgregarProductoEnCarrito" id="idProductoAgregarProductoEnCarrito" placeholder="reid932" required />
+                    </div>
+                    <div class="col-4 pe-4">
+                        <label for="cantidadAgregarProductoEnCarrito" class="form-label pb-2">CANTIDAD</label>
+                        <input type="text" class="form-control" name="cantidadAgregarProductoEnCarrito" id="cantidadAgregarProductoEnCarrito" placeholder="1" required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 pt-4">
+                        <button type="submit" class="btn btn-primary p-2 fw-bold d-flex flex-row" id="botonAgregarProductoEnCarrito">
+                            <span class="material-symbols-outlined">add_shopping_cart</span>
+                            <p>AGREGAR PRODUCTO DEL CARRITO</p>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="tab-pane fade formulariosProductos shadow animate__animated animate__fadeIn animate__slow" id="nav-borrarProductoDeCarrito" role="tabpanel" aria-labelledby="nav-borrarProductoDeCarrito-tab" tabindex="0">
+      <div class="p-4">
+        <form id="eliminarProductoDeCarritoForm">
+          <div class="row">
+            <div class="col-4 pe-4">
+              <label for="idCarritoEliminarProductoEnCarrito" class="form-label pb-2">ID DEL CARRITO</label>
+              <input type="text" class="form-control" name="idCarritoEliminarProductoEnCarrito" id="idCarritoEliminarProductoEnCarrito" placeholder="reid932" required />
+            </div>
+            <div class="col-4 pe-4">
+              <label for="idProductoEliminarProductoEnCarrito" class="form-label pb-2">ID DEL PRODUCTO</label>
+              <input type="text" class="form-control" name="idProductoEliminarProductoEnCarrito" id="idProductoEliminarProductoEnCarrito" placeholder="reid932" required />
+            </div>
+            <div class="col-4 pt-4">
+              <button type="submit" class="btn btn-danger p-2 fw-bold d-flex flex-row" id="botonEliminarProductoDeCarrito">
+                <span class="material-symbols-outlined">delete</span><p>ELIMINAR PRODUCTO DEL CARRITO</p></button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="tab-pane fade formulariosProductos shadow animate__animated animate__fadeIn animate__slow" id="nav-vaciarCarrito" role="tabpanel" aria-labelledby="nav-vaciarCarrito-tab" tabindex="0">
+      <div class="p-4">
+        <form id="VaciarCarritoForm">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>PRECAUCION. Al apretar el boton va a estar vaciando el carrito segun el ID indicado.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label for="idCarrito" class="form-label pb-2">ID DEL CARRITO</label>
+                    <input type="text" class="form-control" name="idCarrito" id="idCarrito" placeholder="1" required />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 pt-4 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-warning p-2 fw-bold d-flex flex-row" id="botonVaciarCarrito">
+                        <span class="material-symbols-outlined pe-2">production_quantity_limits</span>
+                        <p>VACIAR CARRITO</p>
+                    </button>
+                </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row col-12 pt-4">
+    <div class="col-12 tituloSeccion text-center">
+      <h3 class="m-0">LISTADO DE CARRITOS</h3>
+    </div>
+    <div class="row col-12 p-4 row row-cols-1 row-cols-md-6 g-4 animate__animated animate__fadeIn" id="tablaCarritos">
+    </div>
+  </div>
+</div>

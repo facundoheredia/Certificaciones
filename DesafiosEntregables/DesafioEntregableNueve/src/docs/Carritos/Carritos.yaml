@@ -1,0 +1,186 @@
+paths:
+  /api/carritos/:
+    get:
+      summary: Obtener a todos los carritos
+      tags:
+        - Carritos
+      responses:
+        "200":
+          description: Carritos obtenidos correctamente
+          content:
+            aplicacion/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Carritos"
+        "404":
+          description: No se han podido encontrar los carritos
+        "400":
+          description: Error interno del servidor
+  /api/carritos/{cid}:
+    get:
+      summary: Obtener a un carrito segun el ID especificado
+      tags:
+        - Carritos
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          schema:
+            $type: String
+          description: ID del carrito a buscar
+      responses:
+        "200":
+          description: Carrito obtenido correctamente
+          content:
+            aplicacion/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Carritos"
+        "404":
+          description: No se ha podido encontrar el carrito
+        "400":
+          description: Error interno en el servidor
+    put:
+      summary: Agregar un array de productos al carrito segun el ID especificado
+      tags:
+        - Carritos
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          schema:
+            $type: String
+          description: ID del carrito a buscar
+      responses:
+        "200": 
+          description: Producto agregado correctamente al carrito o se agrego mas cantidad
+        "404": 
+          description: No se ha podido encontrar el carrito
+        "400": 
+          description: Error interno en el servidor
+    delete:
+      summay: Vacia el carrito de productos
+      tags:
+        - Carritos
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          schema:
+            $type: String
+          description: ID del carrito a buscar
+      responses:
+        "200": 
+          description: Se ha vaciado el carrito correctamente
+        "404":
+          description: No se ha encontrado el carrito
+        "400":
+          description: Error interno en el servidor
+  /api/carritos/{cid}/compra:
+    post:
+      summary: Genera el ticket de compra del carrito
+      tags:
+        - Carritos
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          schema:
+            $type: String
+          description: ID del carrito a buscar
+      responses:
+        "200":
+          description: Se genero correctamente el ticket de compra
+        "404":
+          description: No se ha podido encontrar el carrito o no se ha podido generar el ticket
+        "400":
+          description: Error interno en el servidor
+  /api/carritos/{cid}/productos/{pid}:
+    post:
+      summary: Agrega el producto espeficiado por ID y su cantidad al carrito indicado
+      tags:
+        - Carritos
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          schema:
+            $type: String
+          description: ID del carrito a buscar
+        - name: pid
+          in: path
+          required: true
+          schema:
+            $type: String
+          description: ID del producto a buscar
+      responses:
+        "200":
+          description: Producto agregado al carrito correctamente o se agrego mas cantidad del producto existente en el carrito
+        "404":
+          description: No se ha podido encontrar el producto o no se ha podido encontrar el producto
+        "400":
+          description: Error interno en el servidor
+    put:
+      summary: Agrega mas cantidad del producto en el carrito
+      tags:
+        - Carritos
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          schema:
+            $type: String
+          description: ID del carrito a buscar
+        - name: pid
+          in: path
+          required: true
+          schema:
+            $type: String
+          description: ID del producto a buscar
+      responses:
+        "200":
+          description: Se agrego mas cantidad del producto en el carrito
+        "404":
+          description: No se ha encontrado el carrito o producto indicado
+        "400":
+          description: Error interno en el servidor
+    delete:
+      summary: Elimina un producto del carrito
+      tags:
+        - Carritos
+      parameters:
+        - name: cid
+          in: path
+          required: true
+          schema:
+            $type: String
+          description: ID del carrito a buscar
+        - name: pid
+          in: path
+          required: true
+          schema:
+            $type: String
+          description: ID del producto a buscar
+      responses:
+        "200":
+          description: Se elimino correctamente el producto del carrito
+        "404":
+          description: No se ha encontrado el carrito o producto indicado
+        "400":
+          description: Error interno en el servidor
+components:
+  schemas:
+    Carritos:
+      type: objetct
+      properties:
+        _id:
+          type: ObjectId
+          description: ID autogenerado por MongoDb
+        productos:
+          type: array
+          description: Array de productos agregados al carrito con sus cantidades
+      example:
+        _id: ObjectId("esteid123456")
+        productos: [{producto: "producto 1", cantidad: "2"},{producto: "producto 2", cantidad: "5"}]

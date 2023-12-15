@@ -1,0 +1,27 @@
+<main id="bodyMensajes" class="container-fluid">
+  <div class="tituloSeccion d-flex justify-content-center align-items-center">
+    <h3 class="m-0">MENSAJES</h3>
+  </div>
+  <div class="p-4">
+    <div class="p-4 border rounded shadow">
+      <form id="crearMensajeForm">
+        <div class="d-flex">
+          <div class="col-4 pe-4">
+            <label for="email" class="form-label pb-2">EMAIL</label>
+            <input type="email" class="form-control" name="email" id="email" required/>
+          </div>
+          <div class="col-8">
+            <label for="mensaje" class="form-label pb-2">MENSAJE</label>
+            <input type="text" class="form-control" name="mensaje" id="mensaje" required/>
+          </div>
+        </div>
+        <div class="pt-4">
+          <button type="submit" class="btn btn-dark p-2 fw-bold" id="botonEnviarMensaje">ENVIAR MENSAJE</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="p-4" id="listaChat">
+
+  </div>
+</main>

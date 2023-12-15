@@ -1,0 +1,37 @@
+<div id="bodySingUp" class="container-fluid d-flex justify-content-center align-items-center">
+    <form id="singUpForm" action="/views/signUp" method="POST">
+        <div class="row d-flex flex-column justify-content-center align-items-center text-center">
+            <div>
+                <label for="nombre" class="form-label pb-2">NOMBRE</label>
+                <input type="text" class="form-control" name="nombre" id="nombre" required/>
+            </div>
+            <div>
+                <label for="apellido" class="form-label pb-2">APELLIDO</label>
+                <input type="text" class="form-control" name="apellido" id="apellido" required/>
+            </div>
+            <div>
+                <label for="edad" class="form-label pb-2">EDAD</label>
+                <input type="number" class="form-control" name="edad" id="edad" required/>
+            </div>
+            <div>
+                <label for="email" class="form-label pb-2">EMAIL</label>
+                <input type="email" class="form-control" name="email" id="email" required/>
+            </div>
+            <div>
+                <label for="contrasenia" class="form-label pb-2">CONTRASEÑA</label>
+                <input type="password" class="form-control" name="contrasenia" id="contrasenia" required/>
+            </div>
+                        <div>
+                <label for="contraseniaConfirmacion" class="form-label pb-2">CONFIRMAR CONTRASEÑA</label>
+                <input type="password" class="form-control" name="contraseniaConfirmacion" id="contraseniaConfirmacion" required/>
+            </div>
+        </div>
+        <div class="row d-flex flex-column justify-content-center align-items-center pt-4">
+            <div class="d-flex justify-content-center align-items-center">
+                <button type="submit" class="btn btn-primary p-2 fw-bold d-flex flex-row" id="botonCrearProducto">
+                    <span class="material-symbols-outlined">account_box</span><p class="ps-2">REGISTRARSE</p>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

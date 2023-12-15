@@ -1,0 +1,102 @@
+paths:
+  /api/usuarios/:
+    get:
+      summary: Obtener a todos los usuarios
+      tags:
+        - Usuarios
+      responses:
+        "200":
+          description: Usuarios obtenidos correctamente
+          content:
+            aplicacion/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Usuarios"
+        "500":
+          descripcion: Error interno del servidor
+  /api/usuarios/{uid}:
+    get:
+      summary: Obtener a un usuario especifico segun su ID
+      tags:
+        - Usuarios
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          schema:
+            $type: String
+          description: ID del usuario a buscar
+      responses:
+        "200":
+          description: Usuario obtenido correctamente
+          content:
+            aplication/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Usuarios"
+        "500":
+          description: Error al obtener al usuario
+    put:
+      summary: Modificar a un usuario especificado segun su ID con los nuevos campos
+      tags:
+        - Usuarios
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          schema:
+            $type: String
+          description: ID del usuario a buscar
+      responses:
+        "200":
+          description: Usuario modificado correctamente
+        "500":
+          description: Error al modificar los datos de lusuario
+    delete:
+      summary: Eliminar a un usuario especificado segun su ID
+      tags:
+        - Usuarios
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          schema:
+            $type: String
+          description: ID del usuario a buscar
+components:
+  schemas:
+    Usuarios:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: ID autogenerado por MongoDb
+        nombre:
+          type: String
+          description: Nombre del usuario
+        apellido:
+          type: String
+          description: Apellido del usuario
+        edad:
+          type: Number
+          description: Edad del usuario
+        email:
+          type: String
+          description: Email del usuario
+        contrasenia:
+          type: String
+          description: contrasenia encriptada del usuario
+        rol:
+          type: String
+          description: Rol del usuario
+
+      example:
+        _id: ObjectId("esteid123456")
+        nombre: NombreDeEjemplo
+        apellido: ApellidoDeEjemplo
+        edad: 33
+        email: mailDePrueba@prueba.com
+        contrasenia: estacontraseniaestaencriptada
+        rol: tester

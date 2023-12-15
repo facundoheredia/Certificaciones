@@ -1,0 +1,148 @@
+paths:
+  /api/productos/:
+    get:
+      summary: Obtener a todos los productos
+      tags:
+        - Productos
+      responses:
+        "200":
+          description: Productos obtenidos correctamente
+          content:
+            aplicacion/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Productos"
+        "404":
+          description: Productos no encontrados
+        "500":
+          description: Error interno del servidor
+    post:
+      summary: Genera un productos con los campos pasados
+      tags:
+        - Productos
+      responses:
+        "201":
+          description: Producto creado correctamente
+        "400":
+          description: Error en crear producto y o dato duplicado
+  /api/productos/{pid}: 
+    get:
+      summary: Obtener a un producto especifico segun su ID
+      tags:
+        - Productos
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          schema:
+            $type: String
+          description: ID del producto a buscar
+      responses:
+        "200":
+          description: Producto obtenido correctamente
+        "404":
+          description: Producto no encontrado
+        "500":
+          description: Error al consultar el producto
+    put:
+      summary: Modifica un producto especifico segun su ID y los campos pasados
+      tags:
+        - Productos
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          schema:
+            $type: String
+          description: ID del producto a buscar
+      responses:
+        "200":
+          description: Productos obtenidos correctamente
+          content:
+            aplicacion/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Productos"
+        "404":
+          description: Producto no encontrado
+        "500":
+          description: Error en actualizar producto
+    delete:
+      summary: Elimina un producto especifico segun su ID
+      tags:
+        - Productos
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          schema:
+            $type: String
+          description: ID del producto a buscar
+      responses:
+        "200":
+          description: Producto eliminado correctamente
+          content:
+            aplicacion/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Productos"
+        "404":
+          description: Producto no encontrado
+        "500":
+          description: Error al eliminar el producto
+  /api/productos/productoFaker:
+    post:
+      summary: Genera a un producto mediante Faker
+      tags:
+        - Productos
+      responses:
+        "201": 
+          description: Producto Faker creado correctamente
+        "400": 
+          description: Error al crear producto
+components:
+  schemas: 
+    Productos:
+      type: object
+      properties:
+        _id: 
+          type: ObjectId
+          description: ID autogenerado por MongoDb
+        titulo:
+          type: String
+          description: Nombre del producto
+        descripcion:
+          type: String
+          description: Breve descripcion del producto
+        precio:
+          type: Number
+          description: Precio de venta del producto
+        codigo:
+          type: String
+          description: Codigo unico del producto
+        stock:
+          type: Number
+          description: Cantidad de unidades del producto
+        categoria:
+          type: String
+          description: Categoria a la que pertenece el producto
+        miniatura:
+          type: Array
+          description: Imagenes de referencia del producto
+        estado: 
+          type: Boolean
+          description: Si el producto se puede o no comprar
+
+      example:
+        _id: ObjectId("esteid123456")
+        titulo: ElNombreDelProducto
+        descripcion: BreveDescripcionDeEsteProducto
+        precio: 10500
+        codigo: gfE31
+        stock: 52
+        categoria: CategoriaTecnologia
+        miniatura: ["url de una imagen", "url de otra imagen", "..."]
+        estado: true

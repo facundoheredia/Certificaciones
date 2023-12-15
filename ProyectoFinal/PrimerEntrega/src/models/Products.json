@@ -1,0 +1,57 @@
+[
+  {
+    "title": "producto2",
+    "description": "este es el producto 2",
+    "price": 2000,
+    "thumbnail": "esta es su imagen",
+    "code": "A343",
+    "stock": 2,
+    "status": true,
+    "category": "categoria2",
+    "id": 2
+  },
+  {
+    "title": "producto3",
+    "description": "este es el producto 3",
+    "price": 3000,
+    "thumbnail": "esta es su imagen",
+    "code": "Y56",
+    "stock": 3,
+    "status": true,
+    "category": "categoria3",
+    "id": 3
+  },
+  {
+    "title": "productomodificado",
+    "description": "este es el producto 5",
+    "price": 5000,
+    "thumbnail": "esta es su imagen",
+    "code": "G5533",
+    "stock": 10,
+    "category": "categoria2",
+    "status": false,
+    "id": 4
+  },
+  {
+    "title": "producto5",
+    "description": "este es el producto 5",
+    "price": 5000,
+    "thumbnail": "esta es su imagen",
+    "code": "G5533",
+    "stock": 5,
+    "status": true,
+    "category": "categoria2",
+    "id": 5
+  },
+  {
+    "title": "productomaaficado",
+    "description": "este es el producto 5",
+    "price": 5000,
+    "thumbnail": "esta es su imagen",
+    "code": "G45433",
+    "stock": 10,
+    "status": true,
+    "category": "categoria2",
+    "id": 6
+  }
+]
